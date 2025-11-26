@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MRI Scans — RepoScan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a href="index.html" class="brand">← RepoScan</a>
+    </div>
+  </header>
+
+  <main class="container main small-page">
+    <h2>MRI Scans</h2>
+    <p class="muted">Upload MRI images and request AI insights.</p>
+
+    <div class="card">
+      <label class="file-upload">
+        <input id="mriFile" type="file" accept="image/*,.dcm" />
+        <span>Choose MRI file</span>
+      </label>
+
+      <div class="actions-row">
+        <button id="analyzeMri" class="btn">Analyze with AI</button>
+        <button id="openMriLink" class="btn ghost">Open AI Tool</button>
+      </div>
+
+      <div id="mriResult" class="result muted small">No analysis yet.</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+---

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RepoScan Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h1 class="brand">RepoScan</h1>
+      <nav class="nav">
+        <button id="profileBtn" class="btn small">Profile</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="hero">
+      <h2>Welcome back, Patient</h2>
+      <p class="muted">Quick access to your scans, readings and AI-assisted insights.</p>
+    </section>
+
+    <section class="grid features">
+      <article class="card" data-target="xray">
+        <div class="icon">
+          <!-- X-Ray icon (SVG) -->
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>X‑Ray Reports</h3>
+        <p class="muted small">Upload or view X‑ray images, get AI analysis.</p>
+      </article>
+
+      <article class="card" data-target="blood_sugar">
+        <div class="icon">
+          <!-- Blood sugar icon -->
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M7 14c0 2.761 2.686 5 5 5s5-2.239 5-5a5 5 0 10-10 0z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+        </div>
+        <h3>Blood Sugar Level</h3>
+        <p class="muted small">Record glucose readings or analyze reports.</p>
+      </article>
+
+      <article class="card" data-target="mri">
+        <div class="icon">
+          <!-- MRI icon -->
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.2"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>MRI Scans</h3>
+        <p class="muted small">Upload MRI DICOM/PNG and request AI-summarized findings.</p>
+      </article>
+
+      <article class="card" data-target="blood_report">
+        <div class="icon">
+          <!-- Blood report icon (test tube) -->
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2v7.586a2 2 0 0 0 .586 1.414L12 14l4.414-2.999A2 2 0 0 0 17 9.586V2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 17v3a1 1 0 0 0 1 1h0a1 1 0 0 0 1-1v-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Blood Report Analysis</h3>
+        <p class="muted small">Complete Blood Count, Kidney & Liver panels, Lipids, Thyroid, Vitamins, Hormones and glucose — explain results in plain language.</p>
+      </article>
+    </section>
+
+    <section class="cards-row">
+      <div class="card wide">
+        <h4>Quick Actions</h4>
+        <div class="actions">
+          <button id="uploadGeneral" class="btn">Upload Report</button>
+          <button id="openRecords" class="btn ghost">View Records</button>
+        </div>
+      </div>
+
+      <div class="card wide">
+        <h4>Recent Activity</h4>
+        <ul class="muted small">
+          <li>BP reading added — Nov 24, 2025</li>
+          <li>X‑ray report uploaded — Nov 20, 2025</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">© RepoScan — Designed by Praxics | AI-assisted medical insights</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+ 

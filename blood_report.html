@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blood Report Analysis — RepoScan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a href="index.html" class="brand">← RepoScan</a>
+    </div>
+  </header>
+
+  <main class="container main small-page">
+    <h2>Blood Report Analysis</h2>
+    <p class="muted">Paste lab values or upload a report for a human-readable explanation of common panels.</p>
+
+    <section class="card" style="margin-top:12px">
+      <h4>Upload CSV for Time-series</h4>
+      <p class="muted small">Upload a CSV with columns like <code>Date,Test,Value</code> (Date in YYYY-MM-DD). The app will plot time-series per test.</p>
+      <label class="file-upload" style="display:flex;align-items:center;gap:10px">
+        <input id="csvUpload" type="file" accept="text/csv" />
+        <span>Select CSV file</span>
+      </label>
+      <div class="actions-row">
+        <button id="loadCsv" class="btn">Load CSV</button>
+        <button id="clearCsv" class="btn ghost">Clear Charts</button>
+      </div>
+      <div id="csvStatus" class="muted small" style="margin-top:10px">No file loaded.</div>
+    </section>
+
+    <section class="grid features">
+      <article class="card">
+        <h3>Complete Blood Count (CBC)</h3>
+        <p class="muted small">Enter values like Hemoglobin (g/dL), Hematocrit (%), WBC (10^3/µL), Platelets (10^3/µL).</p>
+        <label class="input-row"><input id="cbcInput" placeholder="e.g. Hgb:13.5; Hct:40; WBC:6.2; Plt:250" /></label>
+        <div class="actions-row"><button id="analyzeCbc" class="btn">Explain CBC</button></div>
+        <div id="cbcResult" class="result muted small">No analysis yet.</div>
+        <canvas id="cbcChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Blood Sugar Tests</h3>
+        <p class="muted small">Fasting, Random, HbA1c values — how to interpret glucose control.</p>
+        <label class="input-row"><input id="sugarReport" placeholder="e.g. Fasting:95 mg/dL; HbA1c:5.8%" /></label>
+        <div class="actions-row"><button id="analyzeSugarReport" class="btn">Explain Glucose</button></div>
+        <div id="sugarReportResult" class="result muted small">No analysis yet.</div>
+        <canvas id="sugarChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Kidney Function Tests (KFT)</h3>
+        <p class="muted small">Creatinine, eGFR, BUN interpretation and what changes mean.</p>
+        <label class="input-row"><input id="kftInput" placeholder="e.g. Creatinine:1.0 mg/dL; eGFR:95 mL/min" /></label>
+        <div class="actions-row"><button id="analyzeKft" class="btn">Explain KFT</button></div>
+        <div id="kftResult" class="result muted small">No analysis yet.</div>
+        <canvas id="kftChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Liver Function Tests (LFT)</h3>
+        <p class="muted small">AST, ALT, ALP, Bilirubin and albumin — common patterns and causes.</p>
+        <label class="input-row"><input id="lftInput" placeholder="e.g. ALT:32 U/L; AST:28 U/L; ALP:80 U/L" /></label>
+        <div class="actions-row"><button id="analyzeLft" class="btn">Explain LFT</button></div>
+        <div id="lftResult" class="result muted small">No analysis yet.</div>
+        <canvas id="lftChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Lipid Profile</h3>
+        <p class="muted small">Total cholesterol, LDL, HDL, Triglycerides — heart risk summary.</p>
+        <label class="input-row"><input id="lipidInput" placeholder="e.g. TC:200 mg/dL; LDL:130; HDL:45; TG:150" /></label>
+        <div class="actions-row"><button id="analyzeLipid" class="btn">Explain Lipids</button></div>
+        <div id="lipidResult" class="result muted small">No analysis yet.</div>
+        <canvas id="lipidChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Thyroid Panel</h3>
+        <p class="muted small">TSH, Free T4, Free T3 guidance for hypo/hyperthyroid flags.</p>
+        <label class="input-row"><input id="thyroidInput" placeholder="e.g. TSH:2.5 µIU/mL; Free T4:1.1 ng/dL" /></label>
+        <div class="actions-row"><button id="analyzeThyroid" class="btn">Explain Thyroid</button></div>
+        <div id="thyroidResult" class="result muted small">No analysis yet.</div>
+        <canvas id="thyroidChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Vitamins & Minerals</h3>
+        <p class="muted small">Vitamin D, B12, Iron studies — common deficiency thresholds and effects.</p>
+        <label class="input-row"><input id="vitInput" placeholder="e.g. VitD:24 ng/mL; B12:320 pg/mL; Ferritin:50 ng/mL" /></label>
+        <div class="actions-row"><button id="analyzeVits" class="btn">Explain Vitamins</button></div>
+        <div id="vitResult" class="result muted small">No analysis yet.</div>
+        <canvas id="vitChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+
+      <article class="card">
+        <h3>Hormones Checkup</h3>
+        <p class="muted small">Sex hormones, cortisol, others — basic interpretation guidance.</p>
+        <label class="input-row"><input id="hormoneInput" placeholder="e.g. T:400 ng/dL; E2:40 pg/mL; Cortisol:10 µg/dL" /></label>
+        <div class="actions-row"><button id="analyzeHormones" class="btn">Explain Hormones</button></div>
+        <div id="hormoneResult" class="result muted small">No analysis yet.</div>
+        <canvas id="hormoneChart" style="max-width:100%;margin-top:12px;height:220px"></canvas>
+      </article>
+    </section>
+
+    <p class="muted small" style="margin-top:18px">Disclaimer: This tool provides general guidance and explanations for common lab values. It does not replace medical advice. For diagnosis or treatment decisions, consult a qualified clinician.</p>
+    
+    <section class="card" style="margin-top:12px">
+      <h4>Time-Series Charts</h4>
+      <div id="csvCharts" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:10px"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

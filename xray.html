@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>X-Ray Reports — RepoScan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a href="index.html" class="brand">← RepoScan</a>
+    </div>
+  </header>
+
+  <main class="container main small-page">
+    <h2>X‑Ray Reports</h2>
+    <p class="muted">Upload X‑ray images (PNG/JPEG) or DICOM placeholders and analyze with AI.</p>
+
+    <div class="card">
+      <label class="file-upload">
+        <input id="xrayFile" type="file" accept="image/*,.dcm" />
+        <span>Choose X‑ray file</span>
+      </label>
+
+      <div class="actions-row">
+        <button id="analyzeXray" class="btn">Analyze with AI</button>
+        <a id="openXrayLink" class="btn ghost" href="http://365cb42696579e1cbf.gradio.live" target="_blank" rel="noopener">Open AI Tool</a>
+      </div>
+
+      <div id="xrayResult" class="result muted small" aria-live="polite">No analysis yet.</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
